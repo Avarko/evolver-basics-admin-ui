@@ -13,20 +13,14 @@ import TriggerablesRoute from "./routes/triggerables/TriggerablesRoute.tsx";
 import { loader as triggerablesLoader } from "./routes/triggerables/loader.ts";
 import { configureBackendClient } from "@evolver-fi/evolver-basics";
 
-configureBackendClient("http://localhost:8080", undefined, true);
+configureBackendClient(undefined, undefined, true);
 
 const router = createBrowserRouter(
   [
     {
       path: "/",
       element: <App />,
-      children: [
-        {
-          path: "/triggerables",
-          element: <TriggerablesRoute />,
-          loader: triggerablesLoader,
-        },
-      ],
+      children: [],
     },
     {
       path: "/message-log",
@@ -37,6 +31,11 @@ const router = createBrowserRouter(
       path: "/message-log/:id",
       element: <SingleMessageRoute />,
       loader: logListLoader,
+    },
+    {
+      path: "/triggerables",
+      element: <TriggerablesRoute />,
+      loader: triggerablesLoader,
     },
   ],
   {
