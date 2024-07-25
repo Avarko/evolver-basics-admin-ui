@@ -11,9 +11,16 @@ import { loader as logListLoader } from "./routes/message-log/loader.ts";
 import SingleMessageRoute from "./routes/message-log/SingleMessageRoute.tsx";
 import TriggerablesRoute from "./routes/triggerables/TriggerablesRoute.tsx";
 import { loader as triggerablesLoader } from "./routes/triggerables/loader.ts";
+
+import ScheduledTasksRoute from "./routes/scheduled-tasks/ScheduledTasksRoute.tsx";
+import { loader as scheduledTasksLoader } from "./routes/scheduled-tasks/loader.ts";
+
+import JwtTokensRoute from "./routes/jwt-tokens/JwtTokensRoute.tsx";
+import { loader as jwtTokensLoader } from "./routes/jwt-tokens/loader.ts";
+
 import { configureBackendClient } from "@evolver-fi/evolver-basics";
 
-configureBackendClient(undefined, undefined, true);
+configureBackendClient(window.origin, undefined, true);
 
 const router = createBrowserRouter(
   [
@@ -36,6 +43,16 @@ const router = createBrowserRouter(
       path: "/triggerables",
       element: <TriggerablesRoute />,
       loader: triggerablesLoader,
+    },
+    {
+      path: "/scheduled-tasks",
+      element: <ScheduledTasksRoute />,
+      loader: scheduledTasksLoader,
+    },
+    {
+      path: "/jwt-tokens",
+      element: <JwtTokensRoute />,
+      loader: jwtTokensLoader,
     },
   ],
   {

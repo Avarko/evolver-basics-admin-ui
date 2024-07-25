@@ -12,7 +12,6 @@ function App() {
           </Link>
           <Link to="triggerables">Triggerables</Link>
           <Link to="scheduled-tasks">Scheduled Tasks</Link>
-          <Link to="task-status">Task Statuses</Link>
           <Link to="jwt-tokens">JWT tokens (doesn't work)</Link>
         </Stack>
       </aside>
