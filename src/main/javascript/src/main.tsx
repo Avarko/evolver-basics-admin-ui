@@ -8,7 +8,7 @@ import "./index.css";
 import MessageLogRoute from "./routes/message-log/MessageLogRoute.tsx";
 import { loader as logListLoader } from "./routes/message-log/loader.ts";
 
-import SingleMessageRoute from "./routes/message-log/SingleMessageRoute.tsx";
+import SingleMessageRoute from "./routes/message-log/SingleLogMessageRoute.tsx";
 import TriggerablesRoute from "./routes/triggerables/TriggerablesRoute.tsx";
 import { loader as triggerablesLoader } from "./routes/triggerables/loader.ts";
 
@@ -17,6 +17,9 @@ import { loader as scheduledTasksLoader } from "./routes/scheduled-tasks/loader.
 
 import JwtTokensRoute from "./routes/jwt-tokens/JwtTokensRoute.tsx";
 import { loader as jwtTokensLoader } from "./routes/jwt-tokens/loader.ts";
+
+import MessageSendingRoute from "./routes/message-sending/MessageSendingRoute.tsx";
+import { messageListLoader } from "./routes/message-sending/loader.ts";
 
 import { configureBackendClient } from "@evolver-fi/evolver-basics";
 
@@ -28,6 +31,16 @@ const router = createBrowserRouter(
       path: "/",
       element: <App />,
       children: [],
+    },
+    {
+      path: "/messages",
+      element: <MessageSendingRoute />,
+      loader: messageListLoader,
+    },
+    {
+      path: "/messages/:id",
+      element: <SingleMessageRoute />,
+      loader: messageListLoader,
     },
     {
       path: "/message-log",
