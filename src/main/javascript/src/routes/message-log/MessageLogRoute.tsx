@@ -71,7 +71,7 @@ const MessageLogRoute = () => {
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleOnClickRow = (id: string | number, _newWindow?: boolean) => {
-    navigate(`/system-logs/${id}`);
+    navigate(`/message-log/${id}`);
   };
 
   const handleFilterChange = (value: Partial<Filter<LogFilter>>): void => {
