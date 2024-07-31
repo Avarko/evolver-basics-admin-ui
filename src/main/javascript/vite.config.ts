@@ -5,9 +5,9 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   plugins: [react()],
   build: {
-    outDir: "../resources/public/admin-ui",
+    outDir: "../resources/public/admin-ui-assets",
     emptyOutDir: true,
     sourcemap: "inline",
   },
-  base: "/admin-ui/",
+  base: "/admin-ui-assets/",
 });

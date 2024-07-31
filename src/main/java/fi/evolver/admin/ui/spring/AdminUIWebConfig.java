@@ -13,7 +13,7 @@ public class AdminUIWebConfig implements WebMvcConfigurer {
 
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
-		registry.addViewController("/admin-ui/").setViewName("forward:/admin-ui/index.html");
-		registry.addViewController("/admin-ui/{path:[^\\.]*}").setViewName("forward:/admin-ui/index.html");
+		registry.addViewController("/admin-ui/").setViewName("forward:/admin-ui-assets/index.html");
+		registry.addViewController("/admin-ui/**").setViewName("forward:/admin-ui-assets/index.html");
 	}
 }
