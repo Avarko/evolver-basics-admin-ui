@@ -1,0 +1,24 @@
+.bread-crumbs {
+  display: flex;
+    flex-direction: row;
+    gap: 1em;
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    padding: 0.5em;
+}
+
+
+.bread-crumb > a:visited {
+  color: #0000EE;
+}
+
+.bread-crumb > a:hover {
+  color: #7777ff;
+}
+
+.bread-crumb::after {
+  content: "/";
+  position: relative;
+  right: -0.5em;
+}

@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import App from "./routes/front-page/App.tsx";
+import App from "./routes/front-page/FrontPage.tsx";
 import MessageLogRoute from "./routes/message-log/MessageLogRoute.tsx";
 import { loader as logListLoader } from "./routes/message-log/loader.ts";
 
@@ -25,54 +25,62 @@ import MessageSendingRoute from "./routes/message-sending/MessageSendingRoute.ts
 import { messageListLoader } from "./routes/message-sending/loader.ts";
 
 import { configureBackendClient } from "@evolver-fi/evolver-basics";
+import Root from "./Root.tsx";
 
 configureBackendClient(window.origin, undefined, true);
 
+// TODO add a navigation root route
 const router = createBrowserRouter(
   [
     {
       path: "/",
-      element: <App />,
-    },
-    {
-      path: "/messages",
-      element: <MessageSendingRoute />,
-      loader: messageListLoader,
-    },
-    {
-      path: "/messages/:id",
-      element: <SingleMessageRoute />,
-      loader: messageListLoader,
-    },
-    {
-      path: "/message-log",
-      element: <MessageLogRoute />,
-      loader: logListLoader,
-    },
-    {
-      path: "/message-log/:id",
-      element: <SingleMessageRoute />,
-      loader: logListLoader,
-    },
-    {
-      path: "/triggerables",
-      element: <TriggerablesRoute />,
-      loader: triggerablesLoader,
-    },
-    {
-      path: "/scheduled-tasks",
-      element: <ScheduledTasksRoute />,
-      loader: scheduledTasksLoader,
-    },
-    {
-      path: "/scheduled-tasks/:id",
-      element: <ScheduledTaskFormRoute />,
-      loader: singleTaskLoader,
-    },
-    {
-      path: "/jwt-tokens",
-      element: <JwtTokensRoute />,
-      loader: jwtTokensLoader,
+      element: <Root />,
+      children: [
+        {
+          path: "/",
+          element: <App />,
+        },
+        {
+          path: "/messages",
+          element: <MessageSendingRoute />,
+          loader: messageListLoader,
+        },
+        {
+          path: "/messages/:id",
+          element: <SingleMessageRoute />,
+          loader: messageListLoader,
+        },
+        {
+          path: "/message-log",
+          element: <MessageLogRoute />,
+          loader: logListLoader,
+        },
+        {
+          path: "/message-log/:id",
+          element: <SingleMessageRoute />,
+          loader: logListLoader,
+        },
+        {
+          path: "/triggerables",
+          element: <TriggerablesRoute />,
+          loader: triggerablesLoader,
+        },
+        {
+          path: "/scheduled-tasks",
+          element: <ScheduledTasksRoute />,
+          loader: scheduledTasksLoader,
+        },
+        {
+          path: "/scheduled-tasks/:id",
+          element: <ScheduledTaskFormRoute />,
+          loader: singleTaskLoader,
+        },
+        {
+          path: "/jwt-tokens",
+          element: <JwtTokensRoute />,
+          loader: jwtTokensLoader,
+        },
+      ],
     },
   ],
   {
