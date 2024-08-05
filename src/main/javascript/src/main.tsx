@@ -13,12 +13,16 @@ import TriggerablesRoute from "./routes/triggerables/TriggerablesRoute.tsx";
 import { loader as triggerablesLoader } from "./routes/triggerables/loader.ts";
 
 import ScheduledTasksRoute from "./routes/scheduled-tasks/ScheduledTasksRoute.tsx";
-import { loader as scheduledTasksLoader } from "./routes/scheduled-tasks/loader.ts";
+import ScheduledTaskFormRoute from "./routes/scheduled-tasks/ScheduledTaskFormRoute.tsx";
+import {
+  scheduledTasksLoader as scheduledTasksLoader,
+  singleTaskLoader,
+} from "./routes/scheduled-tasks/loader.ts";
 
 import JwtTokensRoute from "./routes/jwt-tokens/JwtTokensRoute.tsx";
 import { loader as jwtTokensLoader } from "./routes/jwt-tokens/loader.ts";
 
-import MessageSendingRoute from "./routes/message-sending/MessageSendingRoute.tsx";
+import MessageSendingRoute from "./routes/message-sending/MessageSendingRoute.tsx"; // import ScheduledTaskFormRoute from "./routes/scheduled-tasks/ScheduledTaskFormRoute.tsx";
 import { messageListLoader } from "./routes/message-sending/loader.ts";
 
 import { configureBackendClient } from "@evolver-fi/evolver-basics";
@@ -61,6 +65,11 @@ const router = createBrowserRouter(
       path: "/scheduled-tasks",
       element: <ScheduledTasksRoute />,
       loader: scheduledTasksLoader,
+    },
+    {
+      path: "/scheduled-tasks/:id",
+      element: <ScheduledTaskFormRoute />,
+      loader: singleTaskLoader,
     },
     {
       path: "/jwt-tokens",

@@ -1,7 +1,10 @@
 import {
+  ScheduledTask,
   ScheduledTaskFilter,
   ScheduledTasksResponse,
+  fetchScheduledTaskById,
   fetchScheduledTasks,
+  getInitialScheduledTask,
 } from "@evolver-fi/evolver-basics/scheduled-task";
 import { LoaderFunction, LoaderFunctionArgs } from "react-router-dom";
 
@@ -55,7 +58,40 @@ export const getScheduledTasksFilterFromSearchParams = (
   return filter;
 };
 
-export const loader: LoaderFunction = async ({
+export const singleTaskLoader: LoaderFunction = async ({
+  params,
+}: LoaderFunctionArgs): Promise<ScheduledTask> => {
+  const id = params.id;
+
+  console.log("id", id);
+
+  if (id === "new") {
+    const newTask = getInitialScheduledTask();
+    return newTask;
+  }
+
+  if ((!id && id !== "0") || Number.isNaN(parseInt(id, 10))) {
+    console.log("no id or id is not a number", id);
+
+    throw new Response("", {
+      status: 404,
+      statusText: "Not found",
+    });
+  }
+
+  const taskId = parseInt(id, 10);
+  const task = await fetchScheduledTaskById(taskId);
+  const { data, status } = task;
+
+  if (status >= 400 || !data) {
+    console.log("failed to fetch task", status, id);
+    throw new Error("Failed to fetch scheduled task");
+  }
+
+  return data;
+};
+
+export const scheduledTasksLoader: LoaderFunction = async ({
   request,
 }: LoaderFunctionArgs): Promise<ScheduledTasksResponse> => {
   try {

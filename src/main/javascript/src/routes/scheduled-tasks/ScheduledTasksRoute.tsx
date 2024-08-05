@@ -16,7 +16,6 @@ import {
   getSearchParamsFromScheduledTasksFilter,
 } from "./loader";
 
-// TODO: add a creation UI to the component library
 const ScheduledTasksRoute = () => {
   const revalidator = useRevalidator();
   const navigation = useNavigation();

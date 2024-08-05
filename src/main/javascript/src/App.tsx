@@ -6,13 +6,11 @@ function App() {
     <div>
       <aside>
         <Stack gap={2} alignItems={"flex-start"}>
-          <Link to="messages">TODO: sanomat</Link>
-          <Link to="message-log">
-            What's the difference between messages and message logs?
-          </Link>
+          <Link to="messages">Message sending</Link>
+          <Link to="message-log">Communication Log</Link>
           <Link to="triggerables">Triggerables</Link>
           <Link to="scheduled-tasks">Scheduled Tasks</Link>
-          <Link to="jwt-tokens">JWT tokens (doesn't work)</Link>
+          <Link to="jwt-tokens">JWT tokens</Link>
         </Stack>
       </aside>
       <Outlet />
