@@ -3,8 +3,7 @@ import ReactDOM from "react-dom/client";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import App from "./App.tsx";
-import "./index.css";
+import App from "./routes/front-page/App.tsx";
 import MessageLogRoute from "./routes/message-log/MessageLogRoute.tsx";
 import { loader as logListLoader } from "./routes/message-log/loader.ts";
 
@@ -22,7 +21,7 @@ import {
 import JwtTokensRoute from "./routes/jwt-tokens/JwtTokensRoute.tsx";
 import { loader as jwtTokensLoader } from "./routes/jwt-tokens/loader.ts";
 
-import MessageSendingRoute from "./routes/message-sending/MessageSendingRoute.tsx"; // import ScheduledTaskFormRoute from "./routes/scheduled-tasks/ScheduledTaskFormRoute.tsx";
+import MessageSendingRoute from "./routes/message-sending/MessageSendingRoute.tsx";
 import { messageListLoader } from "./routes/message-sending/loader.ts";
 
 import { configureBackendClient } from "@evolver-fi/evolver-basics";
@@ -34,7 +33,6 @@ const router = createBrowserRouter(
     {
       path: "/",
       element: <App />,
-      children: [],
     },
     {
       path: "/messages",

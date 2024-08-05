@@ -1,0 +1,9 @@
+.navLinks {  
+  a:visited {
+    color: inherit;
+  }
+
+  a:hover {
+    color:cadetblue;
+  }
+}
